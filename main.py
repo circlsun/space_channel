@@ -5,9 +5,6 @@ import requests
 if not os.path.isdir('images'):
     os.mkdir('images')
 
-filename = 'hubble.jpeg'
-url_images = "https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg"
-path_images = f'{os.getcwd()}/images/{filename}'
 
 
 def save_images(url, path):
@@ -17,4 +14,14 @@ def save_images(url, path):
         file.write(response.content)
 
 
-save_images(url_images, path_images)
+id = '61eefaa89eb1064137a1bd73'
+base_url = f"https://api.spacexdata.com/v5/launches/{id}"
+response = requests.get(base_url)
+response.raise_for_status()
+images_links = response.json()["links"]['flickr']['original']
+print(images_links)
+
+for image_number, images_link in enumerate(images_links):
+    filename = f'spacex{image_number}.jpg'
+    path_images = f'{os.getcwd()}/images/{filename}'
+    save_images(images_link, path_images)
