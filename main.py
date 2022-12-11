@@ -55,9 +55,8 @@ def fetch_nasa_epic():
     config = f"{data}/png/{name}.png"
     
     new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
-    response = requests.get(new_link, params=payload)
+    response = requests.get(new_link)
     response.raise_for_status()
-    print(new_link)
 
     filename = f'nasa_epic.png'
     path_images = f'{os.getcwd()}/images/{filename}'
