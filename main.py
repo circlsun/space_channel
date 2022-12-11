@@ -41,6 +41,29 @@ def fetch_nasa_apod():
         save_images(nasa_url, path_images)
 
 
+def fetch_nasa_epic():
+    apikey = "3KjCE10BlO1Qbq7odcILU9uKGpo0ltj0rWcgP7QT"
+    base_url = 'https://api.nasa.gov/EPIC/api/natural/images'
+    payload = {
+        "api_key" : apikey
+        }
+    response = requests.get(base_url, params=payload)
+    response.raise_for_status()
+
+    data = '2022/12/10'
+    name = response.json()[2]['image']
+    config = f"{data}/png/{name}.png"
+    
+    new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
+    response = requests.get(new_link, params=payload)
+    response.raise_for_status()
+    print(new_link)
+
+    filename = f'nasa_epic.png'
+    path_images = f'{os.getcwd()}/images/{filename}'
+    save_images(new_link, path_images)
+
+
 def get_file_extension(url):
     parsed_url = urlparse(url).path
     extension = os.path.splitext(parsed_url)[1]
@@ -53,7 +76,8 @@ def main():
     if not os.path.isdir('images'):
         os.mkdir('images')
     # fetch_spacex_last_launch()
-    fetch_nasa_apod()
+    # fetch_nasa_apod()
+    fetch_nasa_epic()
 
 
 if __name__=="__main__":
