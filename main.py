@@ -1,5 +1,6 @@
 import os
 import requests
+from urllib.parse import urlparse
 
 
 def save_images(url, path):
@@ -20,6 +21,10 @@ def fetch_spacex_last_launch():
         filename = f'spacex{image_number}.jpg'
         path_images = f'{os.getcwd()}/images/{filename}'
         save_images(images_link, path_images)
+
+def get_expansion(url):
+    parsed_url = urlparse(url)
+    
 
 
 def main():
