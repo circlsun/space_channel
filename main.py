@@ -2,10 +2,6 @@ import os
 import requests
 
 
-if not os.path.isdir('images'):
-    os.mkdir('images')
-
-
 def save_images(url, path):
     response = requests.get(url)
     response.raise_for_status()
@@ -25,4 +21,12 @@ def fetch_spacex_last_launch():
         path_images = f'{os.getcwd()}/images/{filename}'
         save_images(images_link, path_images)
 
-fetch_spacex_last_launch()
+
+def main():
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+    fetch_spacex_last_launch()
+
+
+if __name__=="__main__":
+    main()
