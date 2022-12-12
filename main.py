@@ -1,6 +1,7 @@
 import os
 import requests
 from urllib.parse import urlparse
+from datetime import datetime
 
 
 
@@ -49,18 +50,24 @@ def fetch_nasa_epic():
         }
     response = requests.get(base_url, params=payload)
     response.raise_for_status()
+    count = 5
+    images = response.json()[:count]
 
-    data = '2022/12/10'
-    name = response.json()[2]['image']
-    config = f"{data}/png/{name}.png"
+    for image_index, image in enumerate(images):
+        data = image['date']
+        img_date = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+        imgdate = img_date.strftime('%Y/%m/%d')
+        
+        name = image['image']
+        config = f"{imgdate}/png/{name}.png"
     
-    new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
-    response = requests.get(new_link)
-    response.raise_for_status()
+        new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
+        response = requests.get(new_link)
+        response.raise_for_status()
 
-    filename = f'nasa_epic.png'
-    path_images = f'{os.getcwd()}/images/{filename}'
-    save_images(new_link, path_images)
+        filename = f'nasa_epic_{image_index}.png'
+        path_images = f'{os.getcwd()}/images/{filename}'
+        save_images(new_link, path_images)
 
 
 def get_file_extension(url):
