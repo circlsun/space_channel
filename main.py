@@ -1,9 +1,11 @@
 import os
 import requests
 from urllib.parse import urlparse
-from datetime import datetime
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
+from fetch_nasa_apod import fetch_nasa_apod
+from fetch_spacex_images import fetch_spacex_last_launch
+from fetch_nasa_epic import fetch_nasa_epic
 
 def save_images(url, path):
     response = requests.get(url)
