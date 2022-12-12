@@ -19,7 +19,7 @@ def get_file_extension(url):
     
 
 def main():
-        load_dotenv()
+    load_dotenv()
     try:
         apikey = os.environ["BITLY_TOKEN"]
     except KeyError:
