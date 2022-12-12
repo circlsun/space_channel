@@ -26,7 +26,7 @@ def fetch_spacex_last_launch():
 
 
 def fetch_nasa_apod():
-    count = 50
+    count = 30
     apikey = "3KjCE10BlO1Qbq7odcILU9uKGpo0ltj0rWcgP7QT"
     base_url = f'https://api.nasa.gov/planetary/apod'
     payload = {
@@ -68,6 +68,7 @@ def fetch_nasa_epic():
         filename = f'nasa_epic_{image_index}.png'
         path_images = f'{os.getcwd()}/images/{filename}'
         save_images(new_link, path_images)
+    print("Ok")
 
 
 def get_file_extension(url):
@@ -77,7 +78,6 @@ def get_file_extension(url):
     
 
 def main():
-    test_url = 'https://apod.nasa.gov/apod/image/2212/iotruecolor_galileo_2796.jpg'
 
     if not os.path.isdir('images'):
         os.mkdir('images')
