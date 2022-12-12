@@ -50,7 +50,7 @@ def fetch_nasa_epic():
         }
     response = requests.get(base_url, params=payload)
     response.raise_for_status()
-    count = 5
+    count = 8
     images = response.json()[:count]
 
     for image_index, image in enumerate(images):
@@ -68,7 +68,6 @@ def fetch_nasa_epic():
         filename = f'nasa_epic_{image_index}.png'
         path_images = f'{os.getcwd()}/images/{filename}'
         save_images(new_link, path_images)
-    print("Ok")
 
 
 def get_file_extension(url):
@@ -78,11 +77,10 @@ def get_file_extension(url):
     
 
 def main():
-
     if not os.path.isdir('images'):
         os.mkdir('images')
-    # fetch_spacex_last_launch()
-    # fetch_nasa_apod()
+    fetch_spacex_last_launch()
+    fetch_nasa_apod()
     fetch_nasa_epic()
 
 
