@@ -19,7 +19,7 @@ def get_file_extension(url):
     parsed_url = urlparse(url).path
     extension = os.path.splitext(parsed_url)[1]
     return extension
-    
+
 
 def main():
     load_dotenv()
@@ -27,15 +27,16 @@ def main():
         apikey = os.environ["APIKEY"]
     except KeyError:
         apikey = None
-        print("Add a apikey from API NASA to the virtual environment file <.env>")
+        print("Add a apikey from API NASA to the virtual \
+            environment file <.env>")
 
     if not os.path.isdir('images'):
         os.mkdir('images')
-    
+
     fetch_spacex_last_launch(id)
-    # fetch_nasa_apod(apikey)
-    # fetch_nasa_epic(apikey)
+    fetch_nasa_apod(apikey)
+    fetch_nasa_epic(apikey)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

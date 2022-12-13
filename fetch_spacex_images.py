@@ -17,7 +17,6 @@ def get_file_extension(url):
 
 
 def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
-    
     base_url = f"https://api.spacexdata.com/v5/launches/{id}"
     response = requests.get(base_url)
     response.raise_for_status()

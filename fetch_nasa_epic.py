@@ -14,7 +14,7 @@ def save_images(url, path):
 def fetch_nasa_epic(apikey):
     base_url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
-        "api_key" : apikey
+        "api_key": apikey
         }
     response = requests.get(base_url, params=payload)
     response.raise_for_status()
@@ -25,10 +25,10 @@ def fetch_nasa_epic(apikey):
         data = image['date']
         img_date = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
         imgdate = img_date.strftime('%Y/%m/%d')
-        
+
         name = image['image']
         config = f"{imgdate}/png/{name}.png"
-    
+
         new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
         response = requests.get(new_link)
         response.raise_for_status()
@@ -41,6 +41,7 @@ def fetch_nasa_epic(apikey):
 def main():
     load_dotenv()
     apikey = os.environ["APIKEY"]
+
     fetch_nasa_epic(apikey)
 
 
