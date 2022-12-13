@@ -36,6 +36,9 @@ def main():
     load_dotenv()
     apikey = os.environ["APIKEY"]
 
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+
     fetch_nasa_epic(apikey)
 
 

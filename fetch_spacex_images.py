@@ -17,6 +17,10 @@ def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
 
 
 def main():
+
+    if not os.path.isdir('images'):
+        os.mkdir('images')
+
     fetch_spacex_last_launch()
 
 
