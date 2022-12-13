@@ -1,9 +1,11 @@
 import os
-import telegram
-from dotenv import load_dotenv
-from pathlib import Path
+import argparse
 import time
 import random
+import telegram
+
+from dotenv import load_dotenv
+from pathlib import Path
 
 
 def get_list_files():
@@ -27,8 +29,16 @@ def main():
     tg_chat_id = os.environ['TELEGRAM_CHAT_ID']
     friquency_publications = int(os.environ['FRIQUENCY'])
 
-    count = len(get_list_files())
+    parser = argparse.ArgumentParser(
+        description='This script publishes NASA photos in Telegram-channel')
+    parser.add_argument('--quantity', help='Quantity of published per hour')
+    args = parser.parse_args()
+    quantity_per_hour = args.quantity
 
+    if not quantity_per_hour:
+        quantity_per_hour = 4
+
+    count = len(get_list_files())
     while True:
         print()
         count = len(get_list_files())
@@ -38,7 +48,7 @@ def main():
             count -= 1
             print(list_photos[count])
             send_telegram_photo(tg_token, tg_chat_id, list_photos[count])
-            time.sleep(friquency_publications)
+            time.sleep(friquency_publications / quantity_per_hour)
 
 
 if __name__ == "__main__":
