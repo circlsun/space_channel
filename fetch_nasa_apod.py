@@ -36,7 +36,12 @@ def fetch_nasa_apod(apikey):
 
 def main():
     load_dotenv()
-    apikey = os.environ["APIKEY"]
+    try:
+        apikey = os.environ["APIKEY"]
+    except KeyError:
+        apikey = None
+        print("Add a apikey from API NASA to the virtual \
+            environment file <.env>")
 
     if not os.path.isdir('images'):
         os.mkdir('images')

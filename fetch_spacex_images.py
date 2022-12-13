@@ -1,9 +1,10 @@
 import os
+import argparse
 import requests
 import save_images as save
 
 
-def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
+def fetch_spacex_last_launch(id='latest'):
     base_url = f"https://api.spacexdata.com/v5/launches/{id}"
     response = requests.get(base_url)
     response.raise_for_status()
@@ -17,11 +18,20 @@ def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description='This script downloads photos of the SpaceX \
+            launch of the input id')
+    parser.add_argument('--id', help='id SpaceX launch')
+    args = parser.parse_args()
+    spacex_id = args.id  # id for exsample = '61eefaa89eb1064137a1bd73'
 
     if not os.path.isdir('images'):
         os.mkdir('images')
 
-    fetch_spacex_last_launch()
+    if not spacex_id:
+        spacex_id = 'latest'
+
+    fetch_spacex_last_launch(spacex_id)
 
 
 if __name__ == '__main__':
