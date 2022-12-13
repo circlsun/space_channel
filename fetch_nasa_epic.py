@@ -2,13 +2,7 @@ import os
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
-
-
-def save_images(url, path):
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(path, 'wb') as file:
-        file.write(response.content)
+from save_images import save_images
 
 
 def fetch_nasa_epic(apikey):

@@ -1,19 +1,6 @@
 import os
 import requests
-from urllib.parse import urlparse
-
-
-def save_images(url, path):
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(path, 'wb') as file:
-        file.write(response.content)
-
-
-def get_file_extension(url):
-    parsed_url = urlparse(url).path
-    extension = os.path.splitext(parsed_url)[1]
-    return extension
+import save_images as save
 
 
 def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
@@ -23,9 +10,10 @@ def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):
     images_links = response.json()["links"]['flickr']['original']
 
     for image_number, images_link in enumerate(images_links):
-        filename = f'spacex{image_number}{get_file_extension(images_link)}'
+        filename = f'spacex{image_number}'\
+                   f'{save.get_file_extension(images_link)}'
         path_images = f'{os.getcwd()}/images/{filename}'
-        save_images(images_link, path_images)
+        save.save_images(images_link, path_images)
 
 
 def main():

@@ -2,6 +2,7 @@ import os
 import requests
 from urllib.parse import urlparse
 from dotenv import load_dotenv
+import save_images as save
 
 
 def save_images(url, path):
@@ -28,9 +29,9 @@ def fetch_nasa_apod(apikey):
     response.raise_for_status()
     for num in range(count):
         nasa_url = response.json()[num]['url']
-        filename = f'nasa_apod_{num}{get_file_extension(nasa_url)}'
+        filename = f'nasa_apod_{num}{save.get_file_extension(nasa_url)}'
         path_images = f'{os.getcwd()}/images/{filename}'
-        save_images(nasa_url, path_images)
+        save.save_images(nasa_url, path_images)
 
 
 def main():
