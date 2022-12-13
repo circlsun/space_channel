@@ -31,12 +31,12 @@ def main():
 
     parser = argparse.ArgumentParser(
         description='This script publishes NASA photos in Telegram-channel')
-    parser.add_argument('--quantity', help='Quantity of published per hour')
+    parser.add_argument('quantity', help='Quantity of published per hour')
     args = parser.parse_args()
     quantity_per_hour = args.quantity
 
     if not quantity_per_hour:
-        quantity_per_hour = 4
+        quantity_per_hour = 1
 
     count = len(get_list_files())
     while True:
