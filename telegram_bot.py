@@ -31,7 +31,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         description='This script publishes NASA photos in Telegram-channel')
-    parser.add_argument('quantity', help='Quantity of published per hour')
+    parser.add_argument('-quantity', help='Quantity of published per hour')
     args = parser.parse_args()
     quantity_per_hour = args.quantity
 
