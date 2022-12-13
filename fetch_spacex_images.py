@@ -1,5 +1,6 @@
 import os
 import requests
+from urllib.parse import urlparse
 
 
 def save_images(url, path):
@@ -7,6 +8,12 @@ def save_images(url, path):
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
+
+
+def get_file_extension(url):
+    parsed_url = urlparse(url).path
+    extension = os.path.splitext(parsed_url)[1]
+    return extension
 
 
 def fetch_spacex_last_launch(id='61eefaa89eb1064137a1bd73'):

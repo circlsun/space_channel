@@ -1,5 +1,7 @@
 import os
 import requests
+from datetime import datetime
+from dotenv import load_dotenv
 
 
 def save_images(url, path):
@@ -37,7 +39,9 @@ def fetch_nasa_epic(apikey):
 
 
 def main():
-    fetch_nasa_epic()
+    load_dotenv()
+    apikey = os.environ["APIKEY"]
+    fetch_nasa_epic(apikey)
 
 
 if __name__ == '__main__':

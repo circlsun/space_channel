@@ -1,6 +1,7 @@
 import os
 import requests
 from urllib.parse import urlparse
+from dotenv import load_dotenv
 
 def save_images(url, path):
     response = requests.get(url)
@@ -30,7 +31,10 @@ def fetch_nasa_apod(apikey):
 
 
 def main():
-    fetch_nasa_apod()
+    load_dotenv()
+    apikey = os.environ["APIKEY"]
+
+    fetch_nasa_apod(apikey)
 
 
 if __name__ == '__main__':
