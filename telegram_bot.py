@@ -50,7 +50,6 @@ def main():
     args = parser.parse_args()
     quantity_per_hour = int(args.quantity)
 
-    count = len(get_list_files())
     while True:
         print()
         count = len(get_list_files())
