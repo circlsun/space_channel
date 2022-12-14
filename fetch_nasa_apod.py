@@ -40,7 +40,7 @@ def main():
         apikey = os.environ["APIKEY"]
     except KeyError:
         apikey = None
-        print("Add an apikey from API NASA to the virtual \
+        print("Add apikey from API NASA to the virtual \
             environment file <.env>")
 
     if not os.path.isdir('images'):
