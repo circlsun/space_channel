@@ -46,7 +46,7 @@ def main():
         description='This script publishes NASA photos in Telegram-channel')
     parser.add_argument(
         'quantity', nargs='?', default='1',
-        help='Quantity of published per hour')
+        help='Quantity of published per 4 hour')
     args = parser.parse_args()
     quantity_per_hour = int(args.quantity)
 
@@ -56,11 +56,9 @@ def main():
         count = len(get_list_files())
         list_photos = random.sample(get_list_files(), count)
 
-        while count > 0:
-            count -= 1
-            print(list_photos[count])
-
-            send_telegram_photo(tg_token, tg_chat_id, list_photos[count])
+        for num in range(count):
+            print(list_photos[num])
+            send_telegram_photo(tg_token, tg_chat_id, list_photos[num])
             time.sleep(friquency_publications / quantity_per_hour)
 
 
