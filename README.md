@@ -14,7 +14,7 @@ pip install -r requirements.txt
 `.env` file contents:
 
 ```
-APIKEY = '3K*************************'
+NASA_APIKEY = '3K*************************'
 TELEGRAM_TOKEN = '5******************'
 TELEGRAM_CHAT_ID = '*********'
 FRIQUENCY = '4'
