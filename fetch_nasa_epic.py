@@ -9,7 +9,7 @@ def fetch_nasa_epic(apikey):
     base_url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
         "api_key": apikey
-        }
+    }
     response = requests.get(base_url, params=payload)
     response.raise_for_status()
     count = 8

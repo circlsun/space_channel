@@ -10,7 +10,7 @@ def fetch_nasa_apod(apikey):
     payload = {
         "api_key": apikey,
         "count": count
-        }
+    }
     response = requests.get(base_url, params=payload)
     base_url = response.json()
     response.raise_for_status()
