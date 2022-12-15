@@ -9,13 +9,12 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-def get_list_files():
+def get_images():
     directory = 'images'
     files = Path(directory).glob('*')
-    list_files = []
-    for file in files:
-        list_files.append(str(file))
-    return list_files
+    images = []
+    [images.append(str(file)) for file in files]
+    return images
 
 
 def compress_image(image_name):
@@ -52,8 +51,8 @@ def main():
 
     while True:
         print()
-        count = len(get_list_files())
-        list_photos = random.sample(get_list_files(), count)
+        count = len(get_images())
+        list_photos = random.sample(get_images(), count)
 
         for num in range(count):
             print(list_photos[num])
