@@ -8,13 +8,12 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-def get_list_files():
+def get_images():
     directory = 'images'
     files = Path(directory).glob('*')
-    list_files = []
-    for file in files:
-        list_files.append(str(file))
-    return list_files
+    images = []
+    [images.append(str(file)) for file in files]
+    return images
 
 
 def compress_image(image_name):
@@ -22,7 +21,7 @@ def compress_image(image_name):
     Mb = 1024 ** 2
     img = Image.open(image_name)
     image_size = os.path.getsize(image_name) / Mb
-    if image_size > 1:
+    if image_size > 20:  # Mb
         filename, ext = os.path.splitext(image_name)
         filename = f"{filename}{ext}"
         img.save(filename, quality=quality, optimize=True)
@@ -40,7 +39,7 @@ def main():
     tg_token = os.environ['TELEGRAM_TOKEN']
     tg_chat_id = os.environ['TELEGRAM_CHAT_ID']
 
-    random_photo = random.sample(get_list_files(), len(get_list_files()))[0]
+    random_photo = random.sample(get_images(), len(get_images()))[0]
 
     parser = argparse.ArgumentParser(
         description='This script publishes one NASA photo in Telegram-channel')
