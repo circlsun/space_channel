@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-import save_images as save
+from save_images import save_image, get_file_extension
 
 
 def fetch_nasa_apod(apikey):
@@ -16,9 +16,9 @@ def fetch_nasa_apod(apikey):
     response.raise_for_status()
     for num in range(count):
         nasa_url = base_url[num]['url']
-        filename = f'nasa_apod_{num}{save.get_file_extension(nasa_url)}'
+        filename = f'nasa_apod_{num}{get_file_extension(nasa_url)}'
         image_path = f'{os.getcwd()}/images/{filename}'
-        save.save_image(nasa_url, image_path)
+        save_image(nasa_url, image_path)
 
 
 def main():

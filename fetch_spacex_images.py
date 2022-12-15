@@ -1,7 +1,7 @@
 import os
 import argparse
 import requests
-import save_images as save
+from save_images import save_image, get_file_extension
 
 
 def fetch_spacex_last_launch(id):
@@ -12,9 +12,9 @@ def fetch_spacex_last_launch(id):
 
     for image_number, images_link in enumerate(images_links):
         filename = f'spacex{image_number}'\
-                   f'{save.get_file_extension(images_link)}'
+                   f'{get_file_extension(images_link)}'
         image_path = f'{os.getcwd()}/images/{filename}'
-        save.save_image(images_link, image_path)
+        save_image(images_link, image_path)
 
 
 def main():
