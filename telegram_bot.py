@@ -16,10 +16,10 @@ def main():
     parser = argparse.ArgumentParser(
         description='This script publishes NASA photos in Telegram-channel')
     parser.add_argument(
-        'quantity', nargs='?', default='1',
+        'quantity', type=int, nargs='?', default=1,
         help=f'Quantity of published per {sleep_time} hour')
     args = parser.parse_args()
-    quantity_per_sleep_time = int(args.quantity)
+    quantity_per_sleep_time = args.quantity
 
     while True:
         print()
