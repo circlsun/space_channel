@@ -37,7 +37,7 @@ def fetch_nasa_apod(apikey):
 def main():
     load_dotenv()
     try:
-        apikey = os.environ["APIKEY"]
+        apikey = os.environ["NASA_APIKEY"]
     except KeyError:
         apikey = None
         print("Add apikey from API NASA to the virtual \

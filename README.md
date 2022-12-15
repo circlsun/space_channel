@@ -19,7 +19,7 @@ TELEGRAM_TOKEN = '5******************'
 TELEGRAM_CHAT_ID = '*********'
 FRIQUENCY = '4'
 ```
-`APIKEY`: NASA will not give you the data until you receive a personal "apikey". It is needed to interact with the NASA API. The link to generate the token is listed on the API NASA [Getting Started](https://api.nasa.gov/)
+`NASA_APIKEY`: NASA will not give you the data until you receive a personal "apikey". It is needed to interact with the NASA API. The link to generate the token is listed on the API NASA [Getting Started](https://api.nasa.gov/)
 
 `TELEGRAM_TOKEN`: You also need to create a Telegram bot. To do this, contact [BotFather](https://telegram.me/BotFather).
 
