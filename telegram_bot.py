@@ -19,13 +19,13 @@ def get_images():
 
 def compress_image(image_name):
     quality = 90
-    Mb = 1024 ** 2
-    img = Image.open(image_name)
-    image_size = os.path.getsize(image_name) / Mb
+    Megabytes = 1024 ** 2  # 1024 bit in one byte
+    image = Image.open(image_name)
+    image_size = os.path.getsize(image_name) / Megabytes
     if image_size > 1:
         filename, ext = os.path.splitext(image_name)
         filename = f"{filename}{ext}"
-        img.save(filename, quality=quality, optimize=True)
+        image.save(filename, quality=quality, optimize=True)
 
 
 def send_telegram_photo(token, chat_id, photo):
