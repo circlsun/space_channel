@@ -16,14 +16,16 @@ def fetch_nasa_epic(apikey):
     images = response.json()[:count]
 
     for image_index, image in enumerate(images):
-        data = image['date']
-        img_date = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
-        imgdate = img_date.strftime('%Y/%m/%d')
+        parsed_image_date = image['date']
+        convert_image_date = datetime.strptime(
+            parsed_image_date, "%Y-%m-%d %H:%M:%S")
+        image_date = convert_image_date.strftime('%Y/%m/%d')
 
-        name = image['image']
-        config = f"{imgdate}/png/{name}.png"
+        image_name = image['image']
+        epic_endpoint = f"{image_date}/png/{image_name}.png"
 
-        new_link = f'https://epic.gsfc.nasa.gov/archive/natural/{config}'
+        new_link = f'https://epic.gsfc.nasa.gov/archive/natural/' \
+                   f'{epic_endpoint}'
         response = requests.get(new_link)
         response.raise_for_status()
 
