@@ -1,6 +1,6 @@
 import os
-import requests
 from datetime import datetime
+import requests
 from dotenv import load_dotenv
 from save_images import save_image
 

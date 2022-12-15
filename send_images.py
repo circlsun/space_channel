@@ -1,8 +1,7 @@
-
 import os
+from pathlib import Path
 import telegram
 from PIL import Image
-from pathlib import Path
 
 
 def get_images():
@@ -15,9 +14,9 @@ def get_images():
 
 def compress_image(image_name):
     quality = 90
-    Megabytes = 1024 ** 2  # 1024 bit in one byte
+    megabytes = 1024 ** 2  # 1024 bit in one byte
     image = Image.open(image_name)
-    image_size = os.path.getsize(image_name) / Megabytes
+    image_size = os.path.getsize(image_name) / megabytes
     if image_size > 20:  # Mb
         filename, ext = os.path.splitext(image_name)
         filename = f"{filename}{ext}"
