@@ -31,8 +31,8 @@ def compress_image(image_name):
 def send_telegram_photo(token, chat_id, photo):
     compress_image(photo)
     bot = telegram.Bot(token=token)
-    bot.send_photo(chat_id=chat_id,
-                   photo=open(photo, 'rb'))
+    with open(photo, "rb") as photo:
+        bot.send_photo(chat_id=chat_id, photo=photo)
 
 
 def main():
@@ -52,11 +52,11 @@ def main():
     while True:
         print()
         count = len(get_images())
-        list_photos = random.sample(get_images(), count)
+        photos = random.sample(get_images(), count)
 
         for num in range(count):
-            print(list_photos[num])
-            send_telegram_photo(tg_token, tg_chat_id, list_photos[num])
+            print(photos[num])
+            send_telegram_photo(tg_token, tg_chat_id, photos[num])
             time.sleep(sleep_time / quantity_per_sleep_time)
 
 
