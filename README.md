@@ -64,12 +64,12 @@ The bot uploads a single photo to the Telegram channel.
 
 #### For example:
 ```
-python3 fetch_spacex_images.py /image/nasa_apod.jpg
+python3 telegram_bot_single.py images/nasa_apod_0.jpg
 ```
 
 ### telegram_bot.py
 
-Launches a bot that sequentially uploads photos to the Telegram chat from the `/image` directory, with a delay in publication for the specified time. It works in an infinite loop when the photos for publication run out - publishes the same set of photos, but in any order.
+Launches a bot that sequentially uploads photos to the Telegram chat from the `/images` directory, with a delay in publication for the specified time. It works in an infinite loop when the photos for publication run out - publishes the same set of photos, but in any order.
 
 ## Project Goals
 
