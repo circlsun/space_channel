@@ -31,7 +31,7 @@ FRIQUENCY = '4'
 /user/space_channel/
 |--foo.py
 |  :
-|--bare.py
+|--bar.py
 |--.env
 
 
