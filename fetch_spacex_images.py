@@ -13,8 +13,8 @@ def fetch_spacex_last_launch(id):
     for image_number, images_link in enumerate(images_links):
         filename = f'spacex{image_number}'\
                    f'{save.get_file_extension(images_link)}'
-        path_images = f'{os.getcwd()}/images/{filename}'
-        save.save_images(images_link, path_images)
+        path_image = f'{os.getcwd()}/images/{filename}'
+        save.save_image(images_link, path_image)
 
 
 def main():

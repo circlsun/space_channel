@@ -2,7 +2,7 @@ import os
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
-from save_images import save_images
+from save_images import save_image
 
 
 def fetch_nasa_epic(apikey):
@@ -28,8 +28,8 @@ def fetch_nasa_epic(apikey):
         response.raise_for_status()
 
         filename = f'nasa_epic_{image_index}.png'
-        path_images = f'{os.getcwd()}/images/{filename}'
-        save_images(new_link, path_images)
+        path_image = f'{os.getcwd()}/images/{filename}'
+        save_image(new_link, path_image)
 
 
 def main():
