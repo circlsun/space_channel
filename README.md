@@ -17,7 +17,7 @@ pip install -r requirements.txt
 NASA_APIKEY = '3K*************************'
 TELEGRAM_TOKEN = '5******************'
 TELEGRAM_CHAT_ID = '*********'
-FRIQUENCY = '4'
+SLEEP_TIME = '4'
 ```
 `NASA_APIKEY`: NASA will not give you the data until you receive a personal "apikey". It is needed to interact with the NASA API. The link to generate the token is listed on the API NASA [Getting Started](https://api.nasa.gov/)
 
@@ -25,7 +25,7 @@ FRIQUENCY = '4'
 
 `TELEGRAM_CHAT_ID` is a link to a public Telegram channel in which photos will be published.
 
-`FRIQUENCY` - pause of publications in hours.
+`SLEEP_TIME` - pause of publications in hours.
 
 ```
 /user/space_channel/
