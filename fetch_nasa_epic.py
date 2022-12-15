@@ -30,8 +30,8 @@ def fetch_nasa_epic(apikey):
         response.raise_for_status()
 
         filename = f'nasa_epic_{image_index}.png'
-        path_image = f'{os.getcwd()}/images/{filename}'
-        save_image(new_link, path_image)
+        image_path = f'{os.getcwd()}/images/{filename}'
+        save_image(new_link, image_path)
 
 
 def main():

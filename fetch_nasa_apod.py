@@ -17,8 +17,8 @@ def fetch_nasa_apod(apikey):
     for num in range(count):
         nasa_url = base_url[num]['url']
         filename = f'nasa_apod_{num}{save.get_file_extension(nasa_url)}'
-        path_image = f'{os.getcwd()}/images/{filename}'
-        save.save_image(nasa_url, path_image)
+        image_path = f'{os.getcwd()}/images/{filename}'
+        save.save_image(nasa_url, image_path)
 
 
 def main():

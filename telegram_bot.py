@@ -40,15 +40,15 @@ def main():
     load_dotenv()
     tg_token = os.environ['TELEGRAM_TOKEN']
     tg_chat_id = os.environ['TELEGRAM_CHAT_ID']
-    friquency_publications = int(os.environ['FRIQUENCY'])
+    sleep_time = int(os.environ['FRIQUENCY'])
 
     parser = argparse.ArgumentParser(
         description='This script publishes NASA photos in Telegram-channel')
     parser.add_argument(
         'quantity', nargs='?', default='1',
-        help='Quantity of published per 4 hour')
+        help=f'Quantity of published per {sleep_time} hour')
     args = parser.parse_args()
-    quantity_per_hour = int(args.quantity)
+    quantity_per_sleep_time = int(args.quantity) * 3600  # 3600 sec in one hour
 
     while True:
         print()
@@ -58,7 +58,7 @@ def main():
         for num in range(count):
             print(list_photos[num])
             send_telegram_photo(tg_token, tg_chat_id, list_photos[num])
-            time.sleep(friquency_publications / quantity_per_hour)
+            time.sleep(sleep_time / quantity_per_sleep_time)
 
 
 if __name__ == "__main__":
