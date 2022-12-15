@@ -26,9 +26,10 @@ def fetch_nasa_apod(apikey):
         "count": count
         }
     response = requests.get(base_url, params=payload)
+    base_url = response.json()
     response.raise_for_status()
     for num in range(count):
-        nasa_url = response.json()[num]['url']
+        nasa_url = base_url[num]['url']
         filename = f'nasa_apod_{num}{save.get_file_extension(nasa_url)}'
         path_images = f'{os.getcwd()}/images/{filename}'
         save.save_images(nasa_url, path_images)
