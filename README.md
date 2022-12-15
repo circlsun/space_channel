@@ -1,6 +1,6 @@
 # Space Telegram-Bot
 
-This is a set of several scripts for collecting and publishing photos of space in a telegram bot
+This is a set of several scripts for collecting and publishing photos of space in a Telegram-bot
 
 ## How to install
 
@@ -48,11 +48,28 @@ Uploads via [API NASA](https://api.nasa.gov/) a set of 30 space photos from [NAS
 
 ### fetch_nasa_epic.py
 
-Uploads via [API NASA](https://api.nasa.gov) a set of 30 space photos from [NASA Astronomy Picture of the Day]([NASA EPIC](https://epic.gsfc.nasa.gov/)) to the `/images` directory (creates it if not present).
+Uploads via [API NASA](https://api.nasa.gov) a set of 8 space photos from [NASA Astronomy Picture of the Day]([NASA EPIC](https://epic.gsfc.nasa.gov/)) to the `/images` directory (creates it if not present).
 
 ### fetch_spacex_images.py
+
+Uploads via [API SpaceX](https://github.com/r-spacex/SpaceX-API) a set of launch space photos to the `/images` directory (creates it if not present). If the `id` is not set, then downloads photos of the last launch
+
+#### For example:
+```
+python3 fetch_spacex_images.py 61eefaa89eb1064137a1bd73
+```
 ### telegram_bot_single.py
+
+The bot uploads a single photo to the Telegram channel.
+
+#### For example:
+```
+python3 fetch_spacex_images.py /image/nasa_apod.jpg
+```
+
 ### telegram_bot.py
+
+Launches a bot that sequentially uploads photos to the Telegram chat from the `/image` directory, with a delay in publication for the specified time. It works in an infinite loop when the photos for publication run out - publishes the same set of photos, but in any order.
 
 ## Project Goals
 
