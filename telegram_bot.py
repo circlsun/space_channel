@@ -23,10 +23,9 @@ def main():
 
     while True:
         print()
-        count = len(get_images())
-        photos = random.sample(get_images(), count)
+        photos = random.sample(get_images(), len(get_images()))
 
-        for num in range(count):
+        for num in range(len(get_images())):
             print(photos[num])
             send_telegram_photo(tg_token, tg_chat_id, photos[num])
             time.sleep(sleep_time / quantity_per_sleep_time)
