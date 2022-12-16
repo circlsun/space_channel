@@ -16,10 +16,10 @@ def fetch_nasa_epic(apikey):
     images = response.json()[:count]
 
     for image_index, image in enumerate(images):
-        parsed_image_date = image['date']
-        convert_image_date = datetime.strptime(
-            parsed_image_date, "%Y-%m-%d %H:%M:%S")
-        image_date = convert_image_date.strftime('%Y/%m/%d')
+        parsed_date = image['date']
+        converted_date = datetime.strptime(
+            parsed_date, "%Y-%m-%d %H:%M:%S")
+        image_date = converted_date.strftime('%Y/%m/%d')
 
         image_name = image['image']
         epic_endpoint = f"{image_date}/png/{image_name}.png"
