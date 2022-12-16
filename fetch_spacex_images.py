@@ -27,8 +27,7 @@ def main():
     args = parser.parse_args()
     spacex_id = args.id  # id for exsample = '61eefaa89eb1064137a1bd73'
 
-    if not os.path.isdir('images'):
-        os.mkdir('images')
+    os.makedirs('images', exist_ok=True)
 
     fetch_spacex_last_launch(spacex_id)
 

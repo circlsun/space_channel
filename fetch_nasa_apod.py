@@ -30,8 +30,7 @@ def main():
         print("Add apikey from API NASA to the virtual \
             environment file <.env>")
 
-    if not os.path.isdir('images'):
-        os.mkdir('images')
+    os.makedirs('images', exist_ok=True)
 
     fetch_nasa_apod(apikey)
 
