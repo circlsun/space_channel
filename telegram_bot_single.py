@@ -11,15 +11,17 @@ def main():
     tg_token = os.environ['TELEGRAM_TOKEN']
     tg_chat_id = os.environ['TELEGRAM_CHAT_ID']
 
-    random_photo = random.sample(get_images(), len(get_images()))[0]
+    photos = get_images()
+    random.shuffle(photos)
 
     parser = argparse.ArgumentParser(
         description='This script publishes one NASA photo in Telegram-channel')
     parser.add_argument(
-        'image', nargs='?', default=random_photo,
+        'image', nargs='?', default=photos[0],
         help='Name of photo for publish')
     args = parser.parse_args()
     photo = args.image
+    print(photos[0])
     send_telegram_photo(tg_token, tg_chat_id, photo)
 
 

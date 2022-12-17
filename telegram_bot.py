@@ -22,11 +22,9 @@ def main():
     quantity_per_sleep_time = args.quantity
 
     while True:
-        print()
-        photos = random.sample(get_images(), len(get_images()))
-
-        for num in range(len(get_images())):
-            print(photos[num])
+        photos = get_images()
+        random.shuffle(photos)
+        for num in range(len(photos)):
             send_telegram_photo(tg_token, tg_chat_id, photos[num])
             time.sleep(sleep_time / quantity_per_sleep_time)
 
